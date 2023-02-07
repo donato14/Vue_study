@@ -1,10 +1,11 @@
 <template>
   <div>
 
-    <div class="black-bg" v-if="모달창상태 === true" @click="모달창상태 = false">
+    <div class="black-bg" v-if="모달창상태 === true">
       <div class="white-bg">
         <h4>상세페이지</h4>
         <p>상세페이지 내용</p>
+        <button @click="모달창상태 = false">닫기</button>
       </div>
     </div>
 
@@ -13,11 +14,12 @@
     </div>
 
     <img alt="Vue logo" src="./assets/logo.png">
-    <!-- <div v-for="(작명2,i) in products" :key="i">
-      <h4>{{ 작명2 }}</h4>
-      <p>50 만원</p>
-    </div> -->
-    <div>
+    <div v-for="(작명2,i) in 원룸들" :key="i">
+      <img :src="작명2.image" class="room-img">
+      <h4>{{ 작명2.title }}</h4>
+      <p>{{작명2.price}} 원</p>
+    </div>
+    <!-- <div>
       <img src="./assets/room0.jpg" class="room-img">
       <h4 @click="모달창상태 = true">{{products[0]}}</h4>
       <p>50만원</p>
@@ -34,13 +36,15 @@
       <h4>{{products[2]}}</h4>
       <p>51만원</p>
       <button @click="++신고수[2]">허위매물 신고</button> <span>신고수 : {{신고수[2]}}</span>
-    </div>
+    </div> -->
     
   </div>
 </template>
 
 <script>
 
+import data from './assets/oneroom.js';
+data;
 
 export default {
   name: 'App',
@@ -48,8 +52,9 @@ export default {
     return {
       모달창상태 : false,
       신고수 : [0,0,0],
+      menu: ['Home', 'Shop', 'About'],
       products: ['역삼동원룸','천호동원룸','마포구원룸'],
-      menu: ['Home', 'Shop', 'About']
+      원룸들 : data,
     }
   },
 
