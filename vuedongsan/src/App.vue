@@ -1,26 +1,17 @@
 <template>
   <div>
 
-    <div class="black-bg" v-if="모달창상태 === true">
-      <div class="white-bg">
-        <img :src="원룸들[누른번호].image" class="room-img">
-        <h4>{{ 원룸들[누른번호].title }}</h4>
-        <p>{{ 원룸들[누른번호].content}}</p>
-        <p>{{ 원룸들[누른번호].price }}</p>
-        <button @click="모달창상태 = false">닫기</button>
-      </div>
-    </div>
+    <modal :원룸들="원룸들" :누른번호="누른번호" :모달창상태="모달창상태" />
 
     <div class="menu">
       <a href="" v-for="(작명,i) in menu" :key="i">{{작명}}</a>
     </div>
 
+    <DiscountBanner/>
+
     <img alt="Vue logo" src="./assets/logo.png">
-    <div v-for="(작명2,i) in 원룸들" :key="i">
-      <img :src="작명2.image" class="room-img">
-      <h4 @click="모달창상태 = true; 누른번호 = i">{{ 작명2.title }}</h4>
-      <p>{{작명2.price}} 원</p>
-    </div>
+
+    <Card :원룸들="원룸들" :누른번호="누른번호" :모달창상태="모달창상태" />
 
     
   </div>
@@ -29,7 +20,9 @@
 <script>
 
 import data from './assets/oneroom.js';
-data;
+import DiscountBanner from './DiscountBanner.vue';
+import Modal from './Modal.vue';
+import Card from './Card.vue';
 
 export default {
   name: 'App',
@@ -51,7 +44,9 @@ export default {
   },
 
   components: {
-
+    DiscountBanner : DiscountBanner,
+    Modal : Modal,
+    Card : Card
   }
 }
 </script>
@@ -98,5 +93,12 @@ div {
   background: white;
   border-radius: 8px;
   padding: 20px;
+}
+
+.discount {
+  background: #eee;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
 }
 </style>
