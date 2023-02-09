@@ -1,7 +1,10 @@
 <template>
   <div>
-
-    <modal @closeModal="모달창상태 = false" :원룸들="원룸들" :누른번호="누른번호" :모달창상태="모달창상태" />
+    <!-- <div class="start" :class="{ end : 모달창상태 }"> -->
+    <Transition name="fade">
+      <modal @closeModal="모달창상태 = false" :원룸들="원룸들" :누른번호="누른번호" :모달창상태="모달창상태" />
+    </Transition>
+    <!-- </div> -->
 
     <div class="menu">
       <a href="" v-for="(작명,i) in menu" :key="i">{{작명}}</a>
@@ -52,6 +55,34 @@ export default {
 </script>
 
 <style>
+.start {
+  opacity: 0;
+  transition: all 1s;
+}
+.end {
+  opacity: 1;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: all 1s;
+}
+.fade-enter-to {
+  opacity: 1;
+}
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: all 1s;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
