@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <modal :원룸들="원룸들" :누른번호="누른번호" :모달창상태="모달창상태" />
+    <modal @closeModal="모달창상태 = false" :원룸들="원룸들" :누른번호="누른번호" :모달창상태="모달창상태" />
 
     <div class="menu">
       <a href="" v-for="(작명,i) in menu" :key="i">{{작명}}</a>
@@ -9,9 +9,9 @@
 
     <DiscountBanner/>
 
-    <img alt="Vue logo" src="./assets/logo.png">
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
 
-    <Card :원룸들="원룸들" :누른번호="누른번호" :모달창상태="모달창상태" />
+    <Card @openModal="모달창상태 = true; 누른번호 = $event" :원룸들="원룸들" :누른번호="누른번호" :모달창상태="모달창상태" />
 
     
   </div>
