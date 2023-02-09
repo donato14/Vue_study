@@ -21,6 +21,15 @@ export default {
       month : 1,
     }
   },
+  watch : {
+    month(a){
+      // alert(typeof(a))
+      if(isNaN(a) == true) {
+        alert("숫자만 입력하시오");
+        this.month = 1;
+      }
+    }
+  },
   props: {
     원룸들 : Array,
     누른번호 : Number,
