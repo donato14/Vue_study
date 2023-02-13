@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h5>{{블로그글[0].title}}</h5>
+      <h5><router-link to="/detail">{{블로그글[0].title}}</router-link></h5>
       <p>{{블로그글[0].date}}</p>
     </div>
     <div>
