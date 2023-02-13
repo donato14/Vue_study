@@ -42,17 +42,24 @@
     <p>- Vue 공부하기 -</p>
   </div>
 
-  
+  <List :블로그글="블로그글"/>
+
 </div>
 </template>
 
 <script>
-
+import List from "./components/List.vue";
+import 블로그글 from "./assets/blog.js";
 
 export default {
   name: 'App',
+  data() {
+    return {
+      블로그글 : 블로그글
+    }
+  },
   components: {
-
+    List: List,
   }
 }
 </script>
