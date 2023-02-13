@@ -10,7 +10,7 @@
       <a href="" v-for="(작명,i) in menu" :key="i">{{작명}}</a>
     </div>
 
-    <DiscountBanner/>
+    <DiscountBanner v-if="showDiscount == true " :할인율="할인율"/>
 
     <button @click="priceSort">가격순정렬</button>
     <button @click="sortBack">되돌리기</button>
@@ -41,6 +41,8 @@ export default {
       menu: ['Home', 'Shop', 'About'],
       products: ['역삼동원룸','천호동원룸','마포구원룸'],
       원룸들 : data,
+      showDiscount : true,
+      할인율 : 30,
     }
   },
 
@@ -56,6 +58,17 @@ export default {
     sortBack(){
       this.원룸들 = [...this.원룸들오리지널];
     },
+  },
+
+  mounted() {
+    setInterval(() => {
+      this.할인율 -= 1
+      if(this.할인율 == 0) {
+        this.showDiscount = false
+        clearInterval()
+      }
+      console.log(this.할인율)
+    }, 1000)
   },
 
   components: {
