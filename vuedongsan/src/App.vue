@@ -12,6 +12,9 @@
 
     <DiscountBanner/>
 
+    <button @click="priceSort">가격순정렬</button>
+    <button @click="sortBack">되돌리기</button>
+
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
 
     <Card @openModal="모달창상태 = true; 누른번호 = $event" :원룸들="원룸들" :누른번호="누른번호" :모달창상태="모달창상태" />
@@ -31,6 +34,7 @@ export default {
   name: 'App',
   data(){
     return {
+      원룸들오리지널: [...data],
       모달창상태 : false,
       누른번호: 0,
       신고수 : [0,0,0],
@@ -43,7 +47,15 @@ export default {
   methods: {
     increse(a){
       this.신고수[a] +=1;
-    }
+    },
+    priceSort() {
+      this.원룸들.sort(function(a,b) {
+        return a.price - b.price
+      })
+    },
+    sortBack(){
+      this.원룸들 = [...this.원룸들오리지널];
+    },
   },
 
   components: {
