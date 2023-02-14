@@ -5,7 +5,7 @@
       <p>{{블로그글[0].date}}</p>
     </div>
     <div>
-      <h5><router-link to="/detail/1">{{블로그글[1].title}}</router-link></h5>
+      <h5 @click="$router.push('/detail/1')">{{블로그글[1].title}}</h5>
       <p>{{블로그글[1].date}}</p>
     </div>
     <div>
