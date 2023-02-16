@@ -10,7 +10,7 @@
       <img src="./assets/logo.png" class="logo" />
     </div>
 
-    <Container :게시물="게시물"/>
+    <Container :게시물="게시물" :step="step"/>
     <button @click="more">더보기</button>
 
     <div class="footer">
@@ -19,6 +19,7 @@
         <label for="file" class="input-plus">+</label>
       </ul>
     </div>
+
   </div>
 </template>
 
@@ -33,6 +34,7 @@ export default {
     return {
       게시물 : postdata,
       더보기 : 0,
+      step: 0,
     }
   },
   components: {
