@@ -10,12 +10,12 @@
       <img src="./assets/logo.png" class="logo" />
     </div>
 
-    <Container :게시물="게시물" :step="step"/>
+    <Container :게시물="게시물" :step="step" :url="url"/>
     <button @click="more">더보기</button>
 
     <div class="footer">
       <ul class="footer-button-plus">
-        <input type="file" id="file" class="inputfile" />
+        <input @change="upload" accept="image/*" type="file" id="file" class="inputfile" />
         <label for="file" class="input-plus">+</label>
       </ul>
     </div>
@@ -35,6 +35,7 @@ export default {
       게시물 : postdata,
       더보기 : 0,
       step: 0,
+      url: '',
     }
   },
   components: {
@@ -54,6 +55,14 @@ export default {
           this.게시물 = [...this.게시물, res.data]
         })
       }
+    },
+    upload(e){
+      let 파일 = e.target.files;
+      console.log(파일[0]);
+      let url = URL.createObjectURL(파일[0]);
+      console.log(url)
+      this.url = url;
+      this.step = 1;
     }
   },
 }
