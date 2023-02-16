@@ -5,12 +5,13 @@
         <li>Cancel</li>
       </ul>
       <ul class="header-button-right">
-        <li>Next</li>
+        <li v-if="step ==1" @click="step = 2">Next</li>
+        <li v-if="step ==2" @click="publish">발행</li>
       </ul>
       <img src="./assets/logo.png" class="logo" />
     </div>
 
-    <Container :게시물="게시물" :step="step" :url="url"/>
+    <Container :게시물="게시물" :step="step" :url="url" @write="작성한글 =$event" />
     <button @click="more">더보기</button>
 
     <div class="footer">
@@ -36,6 +37,7 @@ export default {
       더보기 : 0,
       step: 0,
       url: '',
+      작성한글 :'',
     }
   },
   components: {
@@ -63,6 +65,20 @@ export default {
       console.log(url)
       this.url = url;
       this.step = 1;
+    },
+    publish() {
+      let 내게시물 = {
+        name: "Kim Hyun",
+        userImage: "https://placeimg.com/100/100/arch",
+        postImage: this.url,
+        likes: 36,
+        date: "May 15",
+        liked: false,
+        content: this.작성한글,
+        filter: "perpetua"
+      };
+      this.게시물.unshift(내게시물)
+      this.step = 0
     }
   },
 }

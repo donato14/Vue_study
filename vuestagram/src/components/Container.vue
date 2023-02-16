@@ -7,18 +7,14 @@
     <div v-if="step === 1">
       <div class="upload-image" :style="{backgroundImage : `url(${url})`}"></div>
       <div class="filters">
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
+        <FilterBox :url="url" v-for="a in 필터들" :key="a"></FilterBox>
       </div>
     </div>
 
     <div v-if="step === 2">
       <div class="upload-image" :style="{backgroundImage : `url(${url})`}"></div>
       <div class="write">
-        <textarea class="write-box">write!</textarea>
+        <textarea @input="$emit('write', $event.target.value)" class="write-box">write!</textarea>
       </div>
     </div>
 
@@ -27,15 +23,26 @@
 
 <script>
 import post from './Post.vue'
+import FilterBox from './FilterBox.vue'
 
 export default {
-  components: { post:post },
+  components: {
+    post:post ,
+    FilterBox:FilterBox
+    },
   name: 'ContainerContent',
   props: {
     게시물 : Array,
     step : Number,
     url : String,
   },
+  data(){
+    return{
+      필터들 : [ "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
+            "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
+            "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"],
+    }
+  }
 }
 </script>
 
