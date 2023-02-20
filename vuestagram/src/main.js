@@ -7,4 +7,7 @@ let emitter = mitt();
 let app = createApp(App)
 app.config.globalProperties.emitter = emitter;
 
-app.mount('#app')
+
+import store from './store.js'
+
+app.use(store).mount('#app')
