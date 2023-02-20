@@ -7,7 +7,11 @@
     <div v-if="step === 1">
       <div class="upload-image" :style="{backgroundImage : `url(${url})`}"></div>
       <div class="filters">
-        <FilterBox :url="url" v-for="a in 필터들" :key="a"></FilterBox>
+        <FilterBox :필터="필터" :url="url" v-for="필터 in 필터들" :key="필터">
+          <span>{{필터}}</span>
+          <!-- <template v-slot:a> <span>데이터1</span> </template> -->
+          <!-- <template v-slot:b> 데이터2 </template> -->
+        </FilterBox>
       </div>
     </div>
 

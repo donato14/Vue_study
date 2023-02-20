@@ -1,12 +1,17 @@
 <template>
-  <div class="_1977 filter-item" :style="`background-image:url(${url})`"></div> 
+  <div :class="필터 + ' filter-item'" :style="`background-image:url(${url})`">
+    <!-- <slot name="a"></slot> -->
+    <!-- <slot name="b"></slot> -->
+    <slot>{{필터}}</slot>
+  </div> 
 </template>
 
 <script>
 export default {
   name: 'filterBox',
   props: {
-    url: String
+    url: String,
+    필터 : String
   }
 }
 </script>
