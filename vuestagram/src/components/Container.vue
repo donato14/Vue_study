@@ -5,7 +5,7 @@
     </div>
 
     <div v-if="step === 1">
-      <div class="upload-image" :style="{backgroundImage : `url(${url})`}"></div>
+      <div :class="선택한필터" class="upload-image" :style="{backgroundImage : `url(${url})`}"></div>
       <div class="filters">
         <FilterBox :필터="필터" :url="url" v-for="필터 in 필터들" :key="필터">
           <span>{{필터}}</span>
@@ -16,7 +16,7 @@
     </div>
 
     <div v-if="step === 2">
-      <div class="upload-image" :style="{backgroundImage : `url(${url})`}"></div>
+      <div :class="선택한필터" class="upload-image" :style="{backgroundImage : `url(${url})`}"></div>
       <div class="write">
         <textarea @input="$emit('write', $event.target.value)" class="write-box">write!</textarea>
       </div>
@@ -40,11 +40,17 @@ export default {
     step : Number,
     url : String,
   },
+  mounted() {
+    this.emitter.on('selFil', (b) => {
+      this.선택한필터 = b;
+    });
+  },
   data(){
     return{
       필터들 : [ "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
             "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
             "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"],
+      선택한필터 : ''
     }
   }
 }

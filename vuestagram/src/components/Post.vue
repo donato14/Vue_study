@@ -5,7 +5,7 @@
         <div class="profile" :style="{backgroundImage : `url(${게시물.userImage})`}"></div>
         <span class="profile-name">{{게시물.name}}</span>
       </div>
-      <div class="post-body" :style="{backgroundImage : `url(${게시물.postImage})`}"></div>
+      <div :class="선택된필터" class="post-body" :style="{backgroundImage : `url(${게시물.postImage})`}"></div>
       <div class="post-content">
         <p>{{게시물.likes}} Likes</p>
         <p><strong>{{게시물.name}}</strong> {{게시물.content}}</p>
@@ -20,6 +20,7 @@ export default {
   name: "PostContent",
   props: {
     게시물: Object,
+    선택된필터:String,
   }
 }
 </script>

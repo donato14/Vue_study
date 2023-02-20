@@ -38,7 +38,16 @@ export default {
       step: 0,
       url: '',
       작성한글 :'',
+      선택된필터 : '',
     }
+  },
+  mounted() {
+    this.emitter.on('작명', (a) => {
+      console.log(a)
+    });
+    this.emitter.on('selFil', (b) => {
+      this.선택된필터 = b;
+    });
   },
   components: {
     Container : Container,
@@ -75,7 +84,7 @@ export default {
         date: "May 15",
         liked: false,
         content: this.작성한글,
-        filter: "perpetua"
+        filter: this.선택된필터
       };
       this.게시물.unshift(내게시물)
       this.step = 0

@@ -1,8 +1,9 @@
 <template>
-  <div :class="필터 + ' filter-item'" :style="`background-image:url(${url})`">
+  <div @click="selectFilter" :class="필터 + ' filter-item'" :style="`background-image:url(${url})`">
     <!-- <slot name="a"></slot> -->
     <!-- <slot name="b"></slot> -->
     <slot>{{필터}}</slot>
+    <!-- <button @click="fire">버튼</button> -->
   </div> 
 </template>
 
@@ -12,7 +13,15 @@ export default {
   props: {
     url: String,
     필터 : String
-  }
+  },
+  methods: {
+    fire(){
+      this.emitter.emit('작명', '데이터')
+    },
+    selectFilter(){
+      this.emitter.emit('selFil', this.필터)
+    }
+  },
 }
 </script>
 
