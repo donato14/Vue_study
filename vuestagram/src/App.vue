@@ -19,7 +19,7 @@
     <button @click="$store.commit('더하기', 10)">더하기버튼</button>
 
     <p>{{$store.state.more}}</p>
-    <button>더보기버튼테스트</button>
+    <button @click="$store.dispatch('getData')">더보기버튼테스트</button>
 
     <Container :게시물="게시물" :step="step" :url="url" @write="작성한글 =$event" />
     <button @click="more">더보기</button>

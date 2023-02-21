@@ -26,11 +26,18 @@ const store = createStore({
         state.likes--;
         state.좋아요눌렀니 == false;
       }
-    }
+    },
+    setMore(state, data) {
+      state.more = data
+    },
   },
   actions: {
-    getData() {
-      axios.get()
+    getData(context) {
+      axios.get('https://codingapple1.github.io/vue/more0.json')
+        .then((a) => {
+          console.log(a.data)
+          context.commit('setMore', a.data);
+      })
     },
   },
 })
