@@ -17,9 +17,15 @@
     <!-- 하면 안됨 -->
     <button @click="$store.commit('이름변경')">버튼</button>
     <button @click="$store.commit('더하기', 10)">더하기버튼</button>
+    <button @click="더하기(10)">더하기버튼</button>
 
     <p>{{$store.state.more}}</p>
     <button @click="$store.dispatch('getData')">더보기버튼테스트</button>
+
+    <p>{{name}} {{age}}</p>
+    <!-- <p>{{now()}}  {{카운터}}</p>
+    <p>{{now2}}  {{카운터}}</p>
+    <button @click="카운터++">버튼</button> -->
 
     <Container :게시물="게시물" :step="step" :url="url" @write="작성한글 =$event" />
     <button @click="more">더보기</button>
@@ -38,6 +44,7 @@
 import Container from "./components/Container.vue";
 import postdata from './assets/data.js';
 import axios from 'axios';
+import {mapMutations, mapState} from 'vuex'
 
 export default {
   name: 'App',
@@ -49,6 +56,7 @@ export default {
       url: '',
       작성한글 :'',
       선택된필터 : '',
+      카운터: 0,
     }
   },
   mounted() {
@@ -62,7 +70,26 @@ export default {
   components: {
     Container : Container,
   },
+// 
+  computed : {
+    // now2(){
+    //   return new Date();
+    // },
+    name(){
+      return this.$store.state.name
+    },
+    // age(){
+    //   return this.$store.state.age
+    // }
+    ...mapState(['name', 'age', 'likes']),
+    ...mapState({ 작명 : 'name' })
+  },
+// 
   methods: {
+    ...mapMutations(['setMore', '좋아요증가', '더하기']),
+    now(){
+      return new Date();
+    },
     more(){
       if(this.더보기 === 0) {
         axios.get('https://codingapple1.github.io/vue/more0.json')
