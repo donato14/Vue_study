@@ -22,17 +22,22 @@
       </div>
     </div>
 
+    <div v-if="step === 3">
+      <MyPage :one="1"/>
+    </div>
   </div>
 </template>
 
 <script>
 import post from './Post.vue'
 import FilterBox from './FilterBox.vue'
+import MyPage from './MyPage.vue'
 
 export default {
   components: {
     post:post ,
-    FilterBox:FilterBox
+    FilterBox:FilterBox,
+    MyPage:MyPage,
     },
   name: 'ContainerContent',
   props: {

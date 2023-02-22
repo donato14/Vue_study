@@ -11,18 +11,18 @@
       <img src="./assets/logo.png" class="logo" />
     </div>
 
-    <h4>안녕 {{ $store.state.name }}</h4>
-    <h4>{{ $store.state.age }}</h4>
+    <!-- <h4>안녕 {{ $store.state.name }}</h4> -->
+    <!-- <h4>{{ $store.state.age }}</h4> -->
     <!-- <button @click="$store.state.name = '박'">버튼</button> -->
     <!-- 하면 안됨 -->
-    <button @click="$store.commit('이름변경')">버튼</button>
-    <button @click="$store.commit('더하기', 10)">더하기버튼</button>
-    <button @click="더하기(10)">더하기버튼</button>
+    <!-- <button @click="$store.commit('이름변경')">버튼</button> -->
+    <!-- <button @click="$store.commit('더하기', 10)">더하기버튼</button> -->
+    <!-- <button @click="더하기(10)">더하기버튼</button> -->
 
-    <p>{{$store.state.more}}</p>
-    <button @click="$store.dispatch('getData')">더보기버튼테스트</button>
+    <!-- <p>{{$store.state.more}}</p> -->
+    <!-- <button @click="$store.dispatch('getData')">더보기버튼테스트</button> -->
 
-    <p>{{name}} {{age}}</p>
+    <!-- <p>{{name}} {{age}}</p> -->
     <!-- <p>{{now()}}  {{카운터}}</p>
     <p>{{now2}}  {{카운터}}</p>
     <button @click="카운터++">버튼</button> -->
@@ -52,7 +52,7 @@ export default {
     return {
       게시물 : postdata,
       더보기 : 0,
-      step: 0,
+      step: 3,
       url: '',
       작성한글 :'',
       선택된필터 : '',
